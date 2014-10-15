@@ -54,6 +54,8 @@ sc.factory('StellarNetwork', function($rootScope, $timeout, $q) {
     };
 
     self.init = function () {
+        if (self.remote) { return; }
+
         self.remote = new stellar.Remote(Options.server, true);
         self.remote.connect();
         self.remote.on('connected', handleConnect);
